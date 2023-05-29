@@ -1,0 +1,50 @@
+.banner {
+  background-size: cover;
+  height: 700px;
+  width: 100%;
+}
+.buttons {
+  padding-top: 30px;
+  margin-left: 50px;
+}
+.button {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  padding: auto;
+  cursor: pointer;
+  background-color: rgba(231, 10, 21, 0.904);
+  border-radius: 5px;
+  border: none;
+}
+.desc {
+  margin-top: 20px;
+  margin-left: 30px;
+  color: white;
+  font-size: 20px;
+  max-width: 40%;
+  line-height: 1.9rem;
+}
+.navigate{
+margin-top: 300px;
+width: 40px;
+height: 100px;
+padding: auto;
+cursor: pointer;
+background-color: transparent;
+font-size: 50px;
+color: rgb(17, 243, 217);
+border: transparent;
+}
+.navigate1{
+  margin-top: 300px;
+width: 40px;
+height: 100px;
+padding: auto;
+cursor: pointer;
+background-color: transparent;
+font-size: 50px;
+color: rgb(17, 243, 217);
+border: transparent;
+margin-left: 94%;
+}
