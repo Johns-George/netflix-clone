@@ -2,7 +2,7 @@
     display: flex;
     height:80px;
     background-color: rgb(3, 2, 0);
-    width:100%;
+    width:100vw;
     position:sticky;
     top: 0;
 }
@@ -17,8 +17,8 @@ a{
 .sign-in{
     margin-top: 19px;
     height: 40px;
-    width:70px;
-    margin-left: 20px;
+    width:70vw;
+    margin-left: 1vw;
     border: none;
     border-radius: 5px;
     background-color: rgb(184, 22, 22);
@@ -33,7 +33,7 @@ margin-top:16px;
 margin-left: 20px;
 }
 select{
-    margin-left: 370px;
+    margin-left: 25vw;
     height: 40px;
     margin-top: 19px;
     background-color: rgba(0, 0, 0, 0.397);

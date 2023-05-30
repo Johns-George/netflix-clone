@@ -23,7 +23,7 @@ function Rowfile(props) {
     height: "500",
     width: "100%",
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
 

@@ -1,38 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { apikey, imgurl } from "../../constants/constants";
 import axios from "../../components/axios";
 import "./Banner.css";
 function Banner() {
   const [Trend, setTrend] = useState(null);
+  let [randomId, setRandomId] = useState(0)
+
+  const output = useRef([])
   
-  const bannernavigate = ()=>{
-    setRandomId(randomId+1)
+  
+  function getData() {
+    return axios.get(`trending/all/week?api_key=${apikey}&language=en-US`)
+  }
+
+  function BannerNavigate() {
+    if (randomId >= output.current.length) {
+      return
+    }
+
+    setRandomId(val => val + 1)
     console.log(randomId)
-   }
-   const bannernavigate2 = ()=>{
-    setRandomId(randomId-1)
-   }
+
+
+    setTrend(output.current[randomId])
+
+    console.log(`New trend is ${JSON.stringify(Trend, null, 2)}`)
+
+  }
+
+  function BannerNavigate2() {
+    if (randomId <= 0) {
+      return
+    }
+
+    setRandomId(val => val - 1)
+    console.log(randomId)
+
+
+    setTrend(output.current[randomId])
+
+    console.log(`New trend is ${JSON.stringify(Trend, null, 2)}`)
+
+  }
   useEffect(() => {
-    axios
-      .get(`trending/all/week?api_key=${apikey}&language=en-US`)
-      .then((response) => {
-       console.log("shhs")
-        if (Trend === null) {
-          setTrend(response.data.results[randomId]);
+    // if (Trend === null) {
+    //   setTrend(output[randomId]);
+    // }
+    // if (randomId < 20) {
+    //   setTrend(output[randomId += 1]);
+    // }
+    // else {
+    //   setRandomId(randomId = 0)
+    // }
+    // console.log(randomId)
 
-        }
-
-        const interval = setInterval(() => {
-          setRandomId(Math.floor(Math.random() * 20));
-
-
-
-          setTrend(response.data.results[randomId]);
-        }, 5000);
-       
-      
-      });
-  });
+    getData().then((response) => {
+      console.log('Initial render')
+      output.current = response.data.results
+      setTrend(output.current[0])
+    })
+  }, []);
 
   return (
     <div
@@ -42,8 +69,9 @@ function Banner() {
         backgroundImage: `url(${Trend ? imgurl + Trend.backdrop_path : ""})`,
       }}
     >
-    <button onClick={()=>bannernavigate()} className="navigate"> <i className='fas fa-angle-left navigat'></i></button>
-    <button onClick={()=>bannernavigate2()} className="navigate1"> <i className='fas fa-angle-right navigat'></i></button>
+      {randomId}
+      <button onClick={() => BannerNavigate2()} className="navigate"> <i className='fas fa-angle-left navigat'></i>Go left</button>
+      <button onClick={() => BannerNavigate()} className="navigate1"> <i className='fas fa-angle-right navigat'></i>Go right</button>
       <div className="title">
         <h2 className="tit">{Trend ? Trend.title : ""}</h2>
       </div>
@@ -52,6 +80,8 @@ function Banner() {
       </div>
       <div className="description">
         <p className="desc">{Trend ? Trend.overview : " "}</p>
+        <p>Length: { output.current.length }</p>
+        <p>ID: { randomId }</p>
       </div>
     </div>
   );
