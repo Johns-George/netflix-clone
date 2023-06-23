@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { apikey, imgurl } from "../../constants/constants";
 import axios from "../../components/axios";
-import "./Banner.css";
 function Banner() {
   const [Trend, setTrend] = useState(null);
   let [randomId, setRandomId] = useState(0)
@@ -19,13 +18,7 @@ function Banner() {
     }
 
     setRandomId(val => val + 1)
-    console.log(randomId)
-
-
-    setTrend(output.current[randomId])
-
-    console.log(`New trend is ${JSON.stringify(Trend, null, 2)}`)
-
+        setTrend(output.current[randomId])
   }
 
   function BannerNavigate2() {
@@ -34,25 +27,12 @@ function Banner() {
     }
 
     setRandomId(val => val - 1)
-    console.log(randomId)
 
 
     setTrend(output.current[randomId])
 
-    console.log(`New trend is ${JSON.stringify(Trend, null, 2)}`)
-
   }
   useEffect(() => {
-    // if (Trend === null) {
-    //   setTrend(output[randomId]);
-    // }
-    // if (randomId < 20) {
-    //   setTrend(output[randomId += 1]);
-    // }
-    // else {
-    //   setRandomId(randomId = 0)
-    // }
-    // console.log(randomId)
 
     getData().then((response) => {
       console.log('Initial render')
@@ -64,24 +44,21 @@ function Banner() {
   return (
     <div
       id="bann"
-      className="banner"
+      className="bg-cover pt-60 pb-8 w-screen"
       style={{
-        backgroundImage: `url(${Trend ? imgurl + Trend.backdrop_path : ""})`,
+        backgroundImage: `url(${Trend ? imgurl + Trend.backdrop_path : ""})`
       }}
     >
-      {randomId}
-      <button onClick={() => BannerNavigate2()} className="navigate"> <i className='fas fa-angle-left navigat'></i>Go left</button>
-      <button onClick={() => BannerNavigate()} className="navigate1"> <i className='fas fa-angle-right navigat'></i>Go right</button>
-      <div className="title">
-        <h2 className="tit">{Trend ? Trend.title : ""}</h2>
+      <div className="flex justify-between">
+      <button onClick={() => BannerNavigate2()} className=""> <i className='fas fa-angle-left text-gray-500 w-10 text-4xl'></i></button>
+      <button onClick={() => BannerNavigate()} className="navigate1"> <i className='fas fa-angle-right text-gray-500 w-10 text-4xl'></i></button>
       </div>
-      <div className="buttons">
-        <button className="button">Play</button>
+      <div className="lg:mt-20">
+        <h2 className="">{Trend ? Trend.title : ""}</h2>
+        <button className="bg-red-700 border-none rounded-lg cursor-pointer ml-14 mt-6 w-20 h-10">Play</button>
       </div>
       <div className="description">
-        <p className="desc">{Trend ? Trend.overview : " "}</p>
-        <p>Length: { output.current.length }</p>
-        <p>ID: { randomId }</p>
+        <p className="text-white text-2xl mt-14 lg:mt-20 ml-8">{Trend ? Trend.overview : " "}</p>
       </div>
     </div>
   );
