@@ -58,7 +58,7 @@ function Banner() {
         <button className="bg-red-700 border-none rounded-lg cursor-pointer ml-14 mt-6 w-20 h-10">Play</button>
       </div>
       <div className="description">
-        <p className="text-white text-2xl mt-14 lg:mt-20 ml-8">{Trend ? Trend.overview : " "}</p>
+        <p className="text-white text-xl mt-14 lg:mt-8 lg:text-2xl ml-8">{Trend ? Trend.overview : " "}</p>
       </div>
     </div>
   );
