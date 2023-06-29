@@ -4,7 +4,7 @@ import Rowfile from "./components/Row/Rowfile";
 import { apikey } from "../src/constants/constants";
 function App() {
   return (
-    <div className="netflix" id="homebutton">
+    <div  id="homebutton">
       <Navbar />
       <Banner />
       <Rowfile

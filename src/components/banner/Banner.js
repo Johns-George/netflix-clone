@@ -44,7 +44,7 @@ function Banner() {
   return (
     <div
       id="bann"
-      className="bg-cover pt-60 pb-8 w-screen"
+      className="bg-contain bg-no-repeat lg:bg-cover bg-black pt-60 pb-8 w-screen"
       style={{
         backgroundImage: `url(${Trend ? imgurl + Trend.backdrop_path : ""})`
       }}
@@ -54,11 +54,11 @@ function Banner() {
       <button onClick={() => BannerNavigate()} className="navigate1"> <i className='fas fa-angle-right text-gray-500 w-10 text-4xl'></i></button>
       </div>
       <div className="lg:mt-20">
-        <h2 className="">{Trend ? Trend.title : ""}</h2>
-        <button className="bg-red-700 border-none rounded-lg cursor-pointer ml-14 mt-6 w-20 h-10">Play</button>
+        <h2 className="ml-8">{Trend ? Trend.title : ""}</h2>
+        <button className="bg-red-700 border-none rounded-lg cursor-pointer ml-8 mt-6 w-20 h-10">Play</button>
       </div>
       <div className="description">
-        <p className="text-white text-xl mt-14 lg:mt-8 lg:text-2xl ml-8">{Trend ? Trend.overview : " "}</p>
+        <p className="text-white text-xl mt-14 lg:mt-8 lg:text-2xl ml-8 mr-8">{Trend ? Trend.overview : " "}</p>
       </div>
     </div>
   );
