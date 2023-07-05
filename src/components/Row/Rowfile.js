@@ -40,9 +40,13 @@ function Rowfile(props) {
         if (response.data.results.length !== 0) {
           seturlid(response.data.results[0]);
         } else {
-          console.log("empty");
+          alert('No Video Found');
         }
-      });
+      }).catch(
+        function (error) {
+          alert('No Video Found')
+        }
+      );
     }, 1000)
 
     timerId = newtimerId
